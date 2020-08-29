@@ -26,7 +26,7 @@ This led me to creating a spreadsheet! Low and behold, I wracked my brain and ca
 
 Depending on when a new member joins the club, they pay a pro-rated amount of the standard 6-month renewal fee.
 
-<img class="wp-image-49 aligncenter" src="https://629a27e4-a51c-11e8-b072-36d63035d715.app.getshifter.io:45300/wp-content/uploads/2017/10/TM_Fees.png" alt="" width="672" height="836">
+<img class="wp-image-49 aligncenter" src="/assets/TM_Fees.png" alt="" width="672" height="836">
 
 This spreadsheet was all the convincing that was needed to ensure that those who chose to use Square and those who used Cash/Check, were paying the club the same amount. I also included a CEILING function to round up to the nearest whole cent, to avoid losing one cent on amounts that would normally round down. Again, gotta make sure the “convenience” fee is accurate!
 
@@ -34,11 +34,11 @@ Now, if Square or Toastmasters International changes their pricing structure, si
 
 Square is great, you can even put common purchase amounts into the application to make your job easier.
 
-<img class="wp-image-50 aligncenter" src="https://629a27e4-a51c-11e8-b072-36d63035d715.app.getshifter.io:45300/wp-content/uploads/2017/10/IMG_0507.png" alt="" width="413" height="733">
+<img class="wp-image-50 aligncenter" src="/assets/TM_Fees_Mobile.png" alt="" width="413" height="733">
 
 So for a new member in September, just tap September ($7.72) and the “new member kit” ($20.57), swipe the card, and that’s it!
 
 If you want to download the spreadsheet, here are some common formats:
-* <a href="https://629a27e4-a51c-11e8-b072-36d63035d715.app.getshifter.io:45300/wp-content/uploads/2017/10/Toastmasters_Renewal_Fees.pdf">PDF</a>
-* <a href="https://629a27e4-a51c-11e8-b072-36d63035d715.app.getshifter.io:45300/wp-content/uploads/2017/10/Toastmasters_Renewal_Fees.xlsx">Excel</a>
-* <a href="https://629a27e4-a51c-11e8-b072-36d63035d715.app.getshifter.io:45300/wp-content/uploads/2017/10/Toastmasters_Renewal_Fees.numbers">Numbers</a>
+* <a href="/files/Toastmasters_Renewal_Fees.pdf">PDF</a>
+* <a href="/files/Toastmasters_Renewal_Fees.xlsx">Excel</a>
+* <a href="/files/Toastmasters_Renewal_Fees.numbers">Numbers</a>

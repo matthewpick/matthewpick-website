@@ -15,7 +15,7 @@ On my Mac, I used homebrew to install nginx:
 
 Then, forward all web traffic on your router to the computer running nginx.
 
-<img src="https://629a27e4-a51c-11e8-b072-36d63035d715.app.getshifter.io:45300/wp-content/uploads/2016/01/port_forwarding.png" alt="port_forwarding" />
+<img src="/assets/port_forwarding.png" alt="port_forwarding" />
 
 Finally, drop in the config at <code>/usr/localhost/etc/nginx/nginx.conf</code>
 * <em>Make sure to change 192.168.X.XX:8080 to the correct IP address and port</em>
