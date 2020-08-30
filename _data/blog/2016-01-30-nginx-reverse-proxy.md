@@ -20,7 +20,7 @@ Then, forward all web traffic on your router to the computer running nginx.
 Finally, drop in the config at <code>/usr/localhost/etc/nginx/nginx.conf</code>
 * <em>Make sure to change 192.168.X.XX:8080 to the correct IP address and port</em>
 
-`gist:[matthewpick/]5513a469d3fa2f17683f`
+`gist:matthewpick/5513a469d3fa2f17683f`
 
 Then, if your reverse proxy is set up properly, NGINX will route the traffic to the corresponding sites anywhere within your local network. Slick!
 

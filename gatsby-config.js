@@ -20,6 +20,9 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-embed-gist'
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               classPrefix: 'language-',
@@ -31,9 +34,6 @@ module.exports = {
           },
           {
             resolve: 'gatsby-remark-emojis'
-          },
-          {
-            resolve: 'gatsby-remark-embed-gist'
           },
           {
             resolve: `gatsby-remark-images`,
