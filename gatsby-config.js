@@ -56,7 +56,7 @@ module.exports = {
         background_color: `#fff`,
         theme_color: `#381696`,
         display: `standalone`,
-        icon: 'src/images/icon.png',
+        icon: 'static/apple-touch-icon.png',
       },
     },
     `gatsby-plugin-sass`,
