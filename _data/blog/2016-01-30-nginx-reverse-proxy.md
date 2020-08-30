@@ -4,6 +4,7 @@ path: /2016/01/how-to-self-host-a-website-using-nginx-as-a-reverse-proxy/
 date: 2016-01-30T10:00:00.001Z
 title: How to self-host a website using NGINX as a Reverse Proxy
 thumbnail: /assets/image-5.jpg
+metaDescription: ''
 ---
 This guide can be used to route traffic from multiple domain names to specific web servers on your local network. <em>I recommend using a dynamic dns service to give your external IP address a friendly URL.</em>
 

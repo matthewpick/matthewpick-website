@@ -4,6 +4,7 @@ path: /2017/10/markup-fee-structure-for-square-toastmasters-membership-dues/
 date: 2017-10-12T10:00:00.001Z
 title: Markup fee structure for Square - Toastmasters membership dues
 thumbnail: /assets/image-5.jpg
+metaDescription: ''
 ---
 
 Toastmasters is an international organization whose sole purpose is to provide a forum for members to improve public speaking.
