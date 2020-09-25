@@ -31,5 +31,5 @@ Side notes: While this is a good way to get a website running, I would recommend
 
 Additional Resources:
 - <a href="https://github.com/lwndev/jira-vagrant-install">jira-vagrant-install</a> on Github.com
-- <a href="http://www.dd-wrt.com/">DD-WRT</a> - powerful linux-based firmware for routers
-- <a href="www.dnsomatic.com">DNS-O-Matic</a> - free Dynamic DNS service
+- <a href="https://www.dd-wrt.com/">DD-WRT</a> - powerful linux-based firmware for routers
+- <a href="https://www.dnsomatic.com">DNS-O-Matic</a> - free Dynamic DNS service
