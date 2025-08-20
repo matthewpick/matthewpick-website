@@ -31,7 +31,8 @@
     "prismjs": "^1.24.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "sharp": "^0.34.3"
   },
   "devDependencies": {
     "prettier": "^2.3.2"
