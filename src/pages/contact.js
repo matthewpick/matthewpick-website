@@ -20,7 +20,7 @@ const ContactPage = ({
           <p>Let me help you kick start your next project &rarr;</p>
         </div>
         <div>
-          <form className="form-container" action="https://usebasin.com/f/214ca8f497c6" method="post">
+          <form className="form-container" action="https://akvydh6jjc.execute-api.us-east-1.amazonaws.com/submit/matthewpick-com" method="post">
             <div>
               <label htmlFor="w3lName">Name</label>
               <input type="text" name="w3lName" id="w3lName"/>
