@@ -50,10 +50,10 @@ const { title, description = SITE_DESCRIPTION, image } = Astro.props;
     --color-accent-hover: #2d5a42;
     --color-accent-subtle: rgba(61, 122, 90, 0.1);
 
-    /* Secondary accent (dusty blue) */
-    --color-secondary: #6b8cae;
-    --color-secondary-light: #8ba8c4;
-    --color-secondary-dark: #4a6a8a;
+    /* Secondary accent (warm coral) */
+    --color-secondary: #e07a5f;
+    --color-secondary-light: #e99a85;
+    --color-secondary-dark: #c45d42;
 
     /* Decorative greens */
     --color-sage-300: #a8bda8;
@@ -88,10 +88,10 @@ const { title, description = SITE_DESCRIPTION, image } = Astro.props;
     --color-accent-hover: #8a9f8a;
     --color-accent-subtle: rgba(163, 184, 150, 0.1);
 
-    /* Secondary accent (dusty blue - lighter in dark) */
-    --color-secondary: #8ba8c4;
-    --color-secondary-light: #a8c0d8;
-    --color-secondary-dark: #6b8cae;
+    /* Secondary accent (warm coral - lighter in dark) */
+    --color-secondary: #e99a85;
+    --color-secondary-light: #f0b5a5;
+    --color-secondary-dark: #e07a5f;
 
     /* Selection */
     --color-selection: rgba(163, 184, 150, 0.3);
@@ -153,7 +153,22 @@ const { title, description = SITE_DESCRIPTION, image } = Astro.props;
   .prose-themed blockquote {
     background-color: var(--color-bg-subtle);
     border-radius: 0 0.5rem 0.5rem 0;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .prose-themed blockquote p {
+    margin-bottom: 1.5em !important;
+  }
+
+  .prose-themed blockquote p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Callout box - auto-spaces paragraphs from blank lines */
+  .callout {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
   }
 </style>

@@ -25,13 +25,13 @@ function seededRandom(seed: number, index: number): number {
 
 const hash = hashString(slug);
 
-// Color palettes that work with our theme (greens + dusty blue accents)
+// Color palettes that work with our theme (greens + warm coral accents)
 const palettes = [
-  ['#3d7a5a', '#8a9f8a', '#6b8cae', '#4A6B52'], // accent, sage-500, secondary, moss
-  ['#a8bda8', '#8ba8c4', '#6B8F74', '#3d7a5a'], // sage-300, secondary-light, moss-light, accent
-  ['#4A6B52', '#6b8cae', '#a8bda8', '#8a9f8a'], // moss, secondary, sage-300, sage-500
-  ['#8a9f8a', '#3d7a5a', '#4a6a8a', '#6b7d6b'], // sage-500, accent, secondary-dark, sage-700
-  ['#6B8F74', '#8ba8c4', '#A3B896', '#2d5a42'], // moss-light, secondary-light, sage-light, accent-hover
+  ['#3d7a5a', '#8a9f8a', '#e07a5f', '#4A6B52'], // accent, sage-500, secondary, moss
+  ['#a8bda8', '#e99a85', '#6B8F74', '#3d7a5a'], // sage-300, secondary-light, moss-light, accent
+  ['#4A6B52', '#e07a5f', '#a8bda8', '#8a9f8a'], // moss, secondary, sage-300, sage-500
+  ['#8a9f8a', '#3d7a5a', '#c45d42', '#6b7d6b'], // sage-500, accent, secondary-dark, sage-700
+  ['#6B8F74', '#e99a85', '#A3B896', '#2d5a42'], // moss-light, secondary-light, sage-light, accent-hover
 ];
 
 const palette = palettes[hash % palettes.length];
