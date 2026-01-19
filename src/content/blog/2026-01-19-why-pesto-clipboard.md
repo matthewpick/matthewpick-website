@@ -36,7 +36,7 @@ I was able to get a working prototype in just a few hours, and then spent the re
 dialing in the ux to be exactly what I wanted.
 
 Overall, I ended up with something that was the best of both worlds:
-- Familiar UX from Copy 'Em Paste
+- Familiar UX from Copy 'Em
 - Open source aspect of Maccy Clipboard
 
 I've been daily-driving Pesto Clipboard ever since that first weekend claude code session, and it's been
