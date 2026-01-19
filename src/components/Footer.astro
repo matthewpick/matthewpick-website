@@ -1,0 +1,18 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-sand dark:border-forest/50 mt-auto bg-sand/30 dark:bg-deep-green/50">
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-charcoal/60 dark:text-off-white/60">
+        &copy; {currentYear} Matthew Pick
+      </p>
+      <div class="flex items-center gap-1 text-sm text-charcoal/40 dark:text-off-white/40">
+        <span class="inline-block w-2 h-2 rounded-full bg-terracotta dark:bg-terracotta-light"></span>
+        <span class="inline-block w-2 h-2 rounded-full bg-moss dark:bg-moss-light"></span>
+        <span class="inline-block w-2 h-2 rounded-full bg-sage dark:bg-sage-light"></span>
+      </div>
+    </div>
+  </div>
+</footer>

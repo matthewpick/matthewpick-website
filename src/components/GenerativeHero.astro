@@ -1,0 +1,166 @@
+---
+interface Props {
+  slug: string;
+  class?: string;
+}
+
+const { slug, class: className } = Astro.props;
+
+// Simple hash function
+function hashString(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash;
+  }
+  return Math.abs(hash);
+}
+
+// Generate deterministic "random" values from hash
+function seededRandom(seed: number, index: number): number {
+  const x = Math.sin(seed + index * 9999) * 10000;
+  return x - Math.floor(x);
+}
+
+const hash = hashString(slug);
+
+// Color palettes that work with our theme
+const palettes = [
+  ['#C2725A', '#8B9E7E', '#B8956E', '#4A6B52'], // terracotta, sage, clay, moss
+  ['#D4896F', '#A3B896', '#6B8F74', '#C2725A'], // terracotta-light, sage-light, moss-light, terracotta
+  ['#4A6B52', '#A3B896', '#D4896F', '#8B9E7E'], // moss, sage-light, terracotta-light, sage
+  ['#8B9E7E', '#C2725A', '#4A6B52', '#B8956E'], // sage, terracotta, moss, clay
+  ['#6B8F74', '#D4896F', '#A3B896', '#C2725A'], // moss-light, terracotta-light, sage-light, terracotta
+];
+
+const palette = palettes[hash % palettes.length];
+
+// Generate shapes based on hash
+const shapeCount = 5 + (hash % 4);
+const shapes: Array<{
+  type: 'circle' | 'rect' | 'path';
+  props: Record<string, string | number>;
+}> = [];
+
+for (let i = 0; i < shapeCount; i++) {
+  const r = seededRandom(hash, i);
+  const r2 = seededRandom(hash, i + 100);
+  const r3 = seededRandom(hash, i + 200);
+  const r4 = seededRandom(hash, i + 300);
+
+  const color = palette[Math.floor(r * palette.length)];
+  const opacity = 0.4 + r2 * 0.5;
+
+  const shapeType = Math.floor(r3 * 3);
+
+  if (shapeType === 0) {
+    // Circle
+    shapes.push({
+      type: 'circle',
+      props: {
+        cx: r * 100,
+        cy: r2 * 100,
+        r: 10 + r4 * 35,
+        fill: color,
+        opacity,
+      }
+    });
+  } else if (shapeType === 1) {
+    // Rectangle
+    const width = 15 + r4 * 40;
+    const height = 15 + seededRandom(hash, i + 400) * 40;
+    shapes.push({
+      type: 'rect',
+      props: {
+        x: r * 100 - width / 2,
+        y: r2 * 100 - height / 2,
+        width,
+        height,
+        fill: color,
+        opacity,
+        rx: seededRandom(hash, i + 500) > 0.5 ? 4 : 0,
+      }
+    });
+  } else {
+    // Organic blob path
+    const cx = r * 100;
+    const cy = r2 * 100;
+    const size = 15 + r4 * 30;
+    const points = 5 + Math.floor(seededRandom(hash, i + 600) * 3);
+
+    let d = '';
+    for (let p = 0; p <= points; p++) {
+      const angle = (p / points) * Math.PI * 2;
+      const variance = 0.7 + seededRandom(hash, i * 10 + p) * 0.6;
+      const px = cx + Math.cos(angle) * size * variance;
+      const py = cy + Math.sin(angle) * size * variance;
+      d += (p === 0 ? 'M' : 'L') + `${px.toFixed(1)},${py.toFixed(1)} `;
+    }
+    d += 'Z';
+
+    shapes.push({
+      type: 'path',
+      props: {
+        d,
+        fill: color,
+        opacity,
+      }
+    });
+  }
+}
+
+// Add some lines for texture
+const lineCount = 2 + (hash % 3);
+const lines: Array<{ x1: number; y1: number; x2: number; y2: number; color: string }> = [];
+
+for (let i = 0; i < lineCount; i++) {
+  const r = seededRandom(hash, i + 700);
+  const r2 = seededRandom(hash, i + 800);
+  lines.push({
+    x1: r * 100,
+    y1: 0,
+    x2: r2 * 100,
+    y2: 100,
+    color: palette[i % palette.length],
+  });
+}
+---
+
+<svg
+  viewBox="0 0 100 100"
+  preserveAspectRatio="xMidYMid slice"
+  class:list={["w-full h-full", className]}
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id={`bg-${hash}`} x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2B22" />
+      <stop offset="100%" stop-color="#0F1A14" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100" height="100" fill={`url(#bg-${hash})`} />
+
+  {lines.map((line, i) => (
+    <line
+      x1={line.x1}
+      y1={line.y1}
+      x2={line.x2}
+      y2={line.y2}
+      stroke={line.color}
+      stroke-width="0.3"
+      opacity="0.3"
+    />
+  ))}
+
+  {shapes.map((shape) => {
+    if (shape.type === 'circle') {
+      return <circle {...shape.props} />;
+    } else if (shape.type === 'rect') {
+      return <rect {...shape.props} />;
+    } else {
+      return <path {...shape.props} />;
+    }
+  })}
+</svg>

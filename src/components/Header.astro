@@ -1,0 +1,28 @@
+---
+import { SITE_TITLE } from '../consts';
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header class="border-b border-sand dark:border-forest/50 bg-cream/80 dark:bg-deep-green/80 backdrop-blur-sm sticky top-0 z-50">
+  <div class="h-0.5 bg-gradient-to-r from-terracotta via-clay to-sage dark:from-terracotta-light dark:via-clay-light dark:to-sage-light"></div>
+  <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="text-xl font-semibold text-charcoal dark:text-off-white hover:text-terracotta dark:hover:text-terracotta-light transition-colors">
+      {SITE_TITLE}
+    </a>
+    <div class="flex items-center gap-6">
+      <ul class="flex items-center gap-6 text-sm font-medium">
+        <li>
+          <a href="/about" class="text-charcoal dark:text-off-white/90 hover:text-terracotta dark:hover:text-terracotta-light transition-colors">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/contact" class="text-charcoal dark:text-off-white/90 hover:text-terracotta dark:hover:text-terracotta-light transition-colors">
+            Contact
+          </a>
+        </li>
+      </ul>
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>

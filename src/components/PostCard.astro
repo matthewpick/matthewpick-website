@@ -1,0 +1,47 @@
+---
+import GenerativeHero from './GenerativeHero.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  heroImage?: string;
+  slug: string;
+}
+
+const { title, description, pubDate, heroImage, slug } = Astro.props;
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class="group bg-white dark:bg-deep-green rounded-xl overflow-hidden border border-sand dark:border-forest/50 hover:border-terracotta/30 dark:hover:border-terracotta-light/30 transition-all duration-300 hover:shadow-lg hover:shadow-terracotta/5 dark:hover:shadow-terracotta-light/5">
+  <a href={`/blog/${slug}`} class="block">
+    <div class="aspect-video overflow-hidden">
+      {heroImage ? (
+        <img
+          src={heroImage}
+          alt=""
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+      ) : (
+        <div class="w-full h-full group-hover:scale-105 transition-transform duration-300">
+          <GenerativeHero slug={slug} />
+        </div>
+      )}
+    </div>
+    <div class="p-5">
+      <time datetime={pubDate.toISOString()} class="text-sm text-terracotta dark:text-sage-light font-medium">
+        {formattedDate}
+      </time>
+      <h2 class="text-xl font-semibold text-charcoal dark:text-off-white group-hover:text-terracotta dark:group-hover:text-terracotta-light transition-colors mt-1 mb-2">
+        {title}
+      </h2>
+      <p class="text-charcoal/70 dark:text-off-white/70 line-clamp-2">
+        {description}
+      </p>
+    </div>
+  </a>
+</article>

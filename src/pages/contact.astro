@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout title="Contact" description="Get in touch with Matthew Pick.">
+  <div class="py-12">
+    <div class="max-w-xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold text-charcoal dark:text-off-white mb-4">
+        Contact
+      </h1>
+      <p class="text-charcoal/70 dark:text-off-white/70 mb-8">
+        Have a question or want to get in touch? Fill out the form below and I'll get back to you.
+      </p>
+
+      <ContactForm />
+    </div>
+  </div>
+</BaseLayout>

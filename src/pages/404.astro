@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Not Found" description="The page you're looking for doesn't exist.">
+  <div class="py-24 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-terracotta/5 via-transparent to-sage/5 dark:from-terracotta-light/5 dark:to-sage-light/5"></div>
+    <div class="max-w-xl mx-auto px-4 relative">
+      <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-terracotta/10 dark:bg-terracotta-light/10 mb-6">
+        <span class="text-5xl font-bold text-terracotta dark:text-terracotta-light">404</span>
+      </div>
+      <h1 class="text-2xl font-semibold text-charcoal dark:text-off-white mb-4">
+        Page Not Found
+      </h1>
+      <p class="text-charcoal/70 dark:text-off-white/70 mb-8">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-terracotta to-terracotta-dark hover:from-terracotta-dark hover:to-terracotta dark:from-terracotta-light dark:to-clay dark:hover:from-clay dark:hover:to-terracotta-light text-white font-medium rounded-lg transition-all"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Go Home
+      </a>
+    </div>
+  </div>
+</BaseLayout>
