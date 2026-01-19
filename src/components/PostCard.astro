@@ -17,7 +17,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 });
 ---
 
-<article class="group bg-white dark:bg-deep-green rounded-xl overflow-hidden border border-sand dark:border-forest/50 hover:border-terracotta/30 dark:hover:border-terracotta-light/30 transition-all duration-300 hover:shadow-lg hover:shadow-terracotta/5 dark:hover:shadow-terracotta-light/5">
+<article class="group bg-card rounded-xl overflow-hidden border border-border hover:border-accent/30 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5">
   <a href={`/${slug}`} class="flex flex-col sm:flex-row">
     <div class="sm:w-32 md:w-40 flex-shrink-0 aspect-square overflow-hidden">
       {heroImage ? (
@@ -33,13 +33,13 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
       )}
     </div>
     <div class="p-4 flex flex-col justify-center">
-      <time datetime={pubDate.toISOString()} class="text-sm text-terracotta dark:text-sage-light font-medium">
+      <time datetime={pubDate.toISOString()} class="text-sm text-accent font-medium">
         {formattedDate}
       </time>
-      <h2 class="text-xl font-semibold text-charcoal dark:text-off-white group-hover:text-terracotta dark:group-hover:text-terracotta-light transition-colors mt-1 mb-2">
+      <h2 class="text-xl font-semibold text-primary group-hover:text-accent transition-colors mt-1 mb-2">
         {title}
       </h2>
-      <p class="text-charcoal/70 dark:text-off-white/70 line-clamp-2">
+      <p class="text-secondary line-clamp-2">
         {description}
       </p>
     </div>

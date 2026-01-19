@@ -18,7 +18,7 @@ const { title, description = SITE_DESCRIPTION, image } = Astro.props;
   <head>
     <BaseHead title={title} description={description} image={image} />
   </head>
-  <body class="min-h-screen flex flex-col bg-cream dark:bg-dark-earth text-charcoal dark:text-off-white font-sans">
+  <body class="min-h-screen flex flex-col bg-surface text-primary font-sans">
     <Header />
     <main class="flex-1">
       <slot />
@@ -28,15 +28,132 @@ const { title, description = SITE_DESCRIPTION, image } = Astro.props;
 </html>
 
 <style is:global>
+  :root {
+    /* Backgrounds */
+    --color-bg: #f8fafc;           /* slate-50 */
+    --color-bg-card: #ffffff;       /* white */
+    --color-bg-subtle: #f1f5f9;     /* slate-100 */
+    --color-bg-input: #f8fafc;      /* slate-50 */
+
+    /* Text */
+    --color-text: #0f172a;          /* slate-900 */
+    --color-text-secondary: #475569; /* slate-600 */
+    --color-text-muted: #64748b;    /* slate-500 */
+    --color-text-placeholder: #94a3b8; /* slate-400 */
+
+    /* Borders */
+    --color-border: #e2e8f0;        /* slate-200 */
+    --color-border-hover: #cbd5e1;  /* slate-300 */
+
+    /* Primary accent (green) */
+    --color-accent: #3d7a5a;
+    --color-accent-hover: #2d5a42;
+    --color-accent-subtle: rgba(61, 122, 90, 0.1);
+
+    /* Secondary accent (dusty blue) */
+    --color-secondary: #6b8cae;
+    --color-secondary-light: #8ba8c4;
+    --color-secondary-dark: #4a6a8a;
+
+    /* Decorative greens */
+    --color-sage-300: #a8bda8;
+    --color-sage-500: #8a9f8a;
+    --color-sage-700: #6b7d6b;
+    --color-moss: #4A6B52;
+    --color-moss-light: #6B8F74;
+
+    /* Selection */
+    --color-selection: rgba(61, 122, 90, 0.3);
+  }
+
+  .dark {
+    /* Backgrounds */
+    --color-bg: #0F1A14;            /* dark-earth */
+    --color-bg-card: #1A2B22;       /* deep-green */
+    --color-bg-subtle: #1A2B22;     /* deep-green */
+    --color-bg-input: rgba(37, 61, 48, 0.5); /* forest/50 */
+
+    /* Text */
+    --color-text: #F5F7F4;          /* off-white */
+    --color-text-secondary: rgba(245, 247, 244, 0.8);
+    --color-text-muted: rgba(245, 247, 244, 0.6);
+    --color-text-placeholder: rgba(245, 247, 244, 0.4);
+
+    /* Borders */
+    --color-border: rgba(37, 61, 48, 0.5); /* forest/50 */
+    --color-border-hover: rgba(245, 247, 244, 0.2);
+
+    /* Primary accent (sage-light in dark mode) */
+    --color-accent: #A3B896;
+    --color-accent-hover: #8a9f8a;
+    --color-accent-subtle: rgba(163, 184, 150, 0.1);
+
+    /* Secondary accent (dusty blue - lighter in dark) */
+    --color-secondary: #8ba8c4;
+    --color-secondary-light: #a8c0d8;
+    --color-secondary-dark: #6b8cae;
+
+    /* Selection */
+    --color-selection: rgba(163, 184, 150, 0.3);
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   ::selection {
-    background-color: rgba(194, 114, 90, 0.3);
+    background-color: var(--color-selection);
   }
 
-  .dark ::selection {
-    background-color: rgba(212, 137, 111, 0.3);
+  /* Prose theming */
+  .prose-themed {
+    --tw-prose-body: var(--color-text-secondary);
+    --tw-prose-headings: var(--color-text);
+    --tw-prose-links: var(--color-accent);
+    --tw-prose-bold: var(--color-text);
+    --tw-prose-counters: var(--color-accent);
+    --tw-prose-bullets: var(--color-accent);
+    --tw-prose-hr: var(--color-border);
+    --tw-prose-quotes: var(--color-text-secondary);
+    --tw-prose-quote-borders: var(--color-accent);
+    --tw-prose-code: var(--color-accent);
+    --tw-prose-pre-code: var(--color-text);
+    --tw-prose-pre-bg: #1A2B22;
+  }
+
+  .prose-themed a {
+    text-decoration: none;
+  }
+
+  .prose-themed a:hover {
+    text-decoration: underline;
+  }
+
+  .prose-themed code:not(pre code) {
+    background-color: var(--color-bg-subtle);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.375rem;
+  }
+
+  .prose-themed code::before,
+  .prose-themed code::after {
+    content: none;
+  }
+
+  .prose-themed pre {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .prose-themed img {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .prose-themed blockquote {
+    background-color: var(--color-bg-subtle);
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 </style>
