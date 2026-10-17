@@ -6,6 +6,9 @@
  * confirmation instead of FormSnare's generic page. The `action` / `method`
  * attributes are kept as a no-JS fallback: without JavaScript the browser
  * posts natively and FormSnare renders its own confirmation page.
+ *
+ * The form is NOT marked `novalidate` here — the script sets it at runtime so
+ * the no-JS fallback keeps native required-field validation.
  */
 const endpoint =
   import.meta.env.PUBLIC_FORMSNARE_ENDPOINT ?? 'https://formsnare.com/submit/matthewpick-com';
@@ -15,7 +18,6 @@ const endpoint =
   <form
     action={endpoint}
     method="POST"
-    novalidate
     class="space-y-6 bg-card p-6 md:p-8 rounded-xl border border-border"
   >
     <div>
@@ -81,6 +83,7 @@ const endpoint =
   <div
     data-form-success
     role="status"
+    tabindex="-1"
     hidden
     class="bg-card p-6 md:p-8 rounded-xl border border-border text-center"
   >
@@ -97,17 +100,33 @@ const endpoint =
       Your message came through. I'll get back to you at the email address you provided.
     </p>
     <p data-submission-id class="text-xs text-muted mt-4 font-mono"></p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+      <button
+        type="button"
+        data-send-another
+        class="px-5 py-2.5 bg-accent hover:bg-accent-hover text-white font-medium rounded-lg transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface"
+      >
+        Send another message
+      </button>
+      <a
+        href="/"
+        class="px-5 py-2.5 border border-border text-primary font-medium rounded-lg transition-all hover:bg-surface focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-surface"
+      >
+        Back to home
+      </a>
+    </div>
   </div>
 </div>
 
 <script>
   const ERROR_MESSAGES: Record<string, string> = {
     submission_limit_reached:
-      "This form is temporarily not accepting messages. Please email me directly instead.",
-    form_not_found: "This form is misconfigured. Please email me directly instead.",
+      "This form isn't accepting messages at the moment. Please try again later.",
+    form_not_found:
+      "This form is temporarily unavailable. Please try again later — I'm on it.",
   };
   const FALLBACK_ERROR =
-    "Something went wrong sending your message. Please try again, or email me directly.";
+    "Something went wrong sending your message. Please try again in a moment.";
   const NETWORK_ERROR =
     "Could not reach the server. Check your connection and try again.";
 
@@ -120,7 +139,17 @@ const endpoint =
     const errorBox = root.querySelector<HTMLElement>('[data-form-error]');
     const successBox = root.querySelector<HTMLElement>('[data-form-success]');
     const submissionIdBox = root.querySelector<HTMLElement>('[data-submission-id]');
+    const sendAnother = root.querySelector<HTMLButtonElement>('[data-send-another]');
     const buttonLabel = button?.textContent ?? 'Send Message';
+
+    // Native validation is only suppressed once we know JS is running; the no-JS
+    // fallback keeps the browser's own required-field checks.
+    form.noValidate = true;
+
+    // `format=json` asks FormSnare for a JSON body instead of its HTML page.
+    // Built via URL so an endpoint that already carries a query string survives.
+    const submitUrl = new URL(endpoint, document.baseURI);
+    submitUrl.searchParams.set('format', 'json');
 
     const showError = (message: string) => {
       if (!errorBox) return;
@@ -150,8 +179,7 @@ const endpoint =
       });
 
       try {
-        // `format=json` asks FormSnare for a JSON body instead of its HTML page.
-        const response = await fetch(`${endpoint}?format=json`, {
+        const response = await fetch(submitUrl, {
           method: 'POST',
           headers: { Accept: 'application/json' },
           body,
@@ -169,6 +197,7 @@ const endpoint =
         if (successBox) {
           successBox.hidden = false;
           successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          successBox.focus();
         }
         if (submissionIdBox && result.submission_id) {
           submissionIdBox.textContent = `Reference: ${result.submission_id}`;
@@ -181,6 +210,15 @@ const endpoint =
           button.textContent = buttonLabel;
         }
       }
+    });
+
+    sendAnother?.addEventListener('click', () => {
+      form.reset();
+      if (errorBox) errorBox.hidden = true;
+      if (submissionIdBox) submissionIdBox.textContent = '';
+      if (successBox) successBox.hidden = true;
+      form.hidden = false;
+      form.querySelector<HTMLInputElement>('#name')?.focus();
     });
   });
 </script>
